@@ -1,0 +1,102 @@
+/* White Background for the Whole Section */
+.best-sellers {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: white;
+    flex-wrap: wrap; /* Makes it responsive */
+}
+
+/* Styling for Each Card */
+.card {
+    width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image */
+.product-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Product Title */
+.product-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    margin: 15px 0 5px;
+}
+
+/* Product Description */
+.product-description {
+    font-size: 0.95rem;
+    color: #555;
+    padding: 0 15px;
+    line-height: 1.4;
+}
+
+/* Product Price */
+.product-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: black;
+    margin: 12px 0;
+}
+
+/* Star Rating */
+.rating {
+    font-size: 1.2rem;
+    color: gold;
+    margin-bottom: 12px;
+}
+
+/* Buy Now Button with Dynamic Background */
+.buy-now-btn {
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.2s;
+    border-radius: 0 0 15px 15px;
+}
+
+.buy-now-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .best-sellers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 320px;
+    }
+}
+.sellers-title {
+    text-align: center; /* Center text */
+    font-size: 2rem; /* Adjust font size */
+    margin-bottom: 20px; /* Add spacing below */
+  }
+  

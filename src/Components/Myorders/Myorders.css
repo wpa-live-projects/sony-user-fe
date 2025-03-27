@@ -1,0 +1,125 @@
+.my-orders-container {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orders-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  /* Grid Layout */
+  .orders-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 boxes max per row */
+    gap: 1.5rem;
+    justify-items: center;
+  }
+  
+  .order-card {
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+  
+  .order-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .order-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 2px solid #f0f0f0;
+  }
+  
+  .order-details {
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .order-details h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #333;
+  }
+  
+  .order-details p {
+    margin: 0.4rem 0;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Status Styling */
+  .status {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  .status.pending {
+    background-color: #f4c542;
+    color: #fff;
+  }
+  
+  .status.delivered {
+    background-color: #27ae60;
+    color: #fff;
+  }
+  
+  .status.cancelled {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  /* Cancel Button */
+  .cancel-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    width: 100%;
+    transition: background 0.3s;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .orders-list {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+  
+    .order-card {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .orders-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .order-card {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,103 @@
+/* Reviews Section */
+.reviews-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f8f8;
+  }
+  
+  .reviews-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 10px; /* Prevents content from being hidden */
+  }
+  
+  /* Title Styling */
+  .reviews-title {
+    font-family: courgette;
+    font-size: 2.5rem;
+  }
+  
+  /* Reviews Container */
+  .reviews-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    width: max-content; /* Ensures content extends beyond the screen if needed */
+  }
+  
+  /* Scrollbar Styling */
+  .reviews-wrapper::-webkit-scrollbar {
+    height: 10px; /* Thicker scrollbar */
+  }
+  
+  .reviews-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  /* Shorter and Thicker Scrollbar Thumb */
+  .reviews-wrapper::-webkit-scrollbar-thumb {
+    background: #DA4744; /* Red scrollbar */
+    border-radius: 5px;
+    height: 15px !important; /* Short scrollbar */
+    min-height: 15px !important; /* Prevent stretching */
+    width: 10px; /* Thick scrollbar */
+  }
+  
+  .reviews-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #B93A38; /* Slightly darker red on hover */
+  }
+  
+  /* Review Card Styling */
+  .review-card {
+    flex: 0 0 250px;
+    background: #EAAE40; /* Golden Yellow Card */
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content */
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* Centered Review Image */
+  .review-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Reviewer Name */
+  .review-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Star Rating */
+  .rating {
+    color: gold;
+    margin: 0.5rem 0;
+  }
+  
+  .star-icon {
+    margin-right: 3px;
+  }
+  
+  /* Review Text */
+  .review-text {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 5px;
+    max-width: 90%;
+    word-wrap: break-word;
+    text-align: center;
+  }
+  

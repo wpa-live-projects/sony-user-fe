@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courgette', cursive;
+    background-color: white;
+}
+
+.signup-wrapper {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* 🔹 IMAGE STYLING */
+.signup-image {
+    flex: 1;
+    display: flex;
+    padding-left: 15px;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Keeps image fixed */
+    left: 10%; /* Adjust this value to control image position */
+}
+
+.signup-image img {
+    width: 100%;
+    max-width: 500px;
+    height: 550px;
+    padding-bottom: 50px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.signup-image img:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* 🔹 SIGNUP FORM STYLING */
+.signup-container {
+    flex: 1;
+    max-width: 400px;
+    padding: 40px;
+    border: 3px solid #DA4744;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+
+    position: relative;
+    left: 200px; /* Moves form slightly to the left */
+}
+
+.signup-container:hover {
+    transform: translateY(-5px); /* Floating effect */
+}
+
+/* 🔹 HEADING */
+.signup-container h2 {
+    color: #DA4744;
+    margin-bottom: 20px;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+/* 🔹 INPUT FIELDS */
+.signup-container input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 2px solid #DA4744;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.signup-container input:focus {
+    border-color: #EAAE40;
+    box-shadow: 0 0 5px rgba(234, 174, 64, 0.7);
+}
+
+/* 🔹 SIGNUP BUTTON */
+.signup-container button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #DA4744, #EAAE40);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.signup-container button:hover {
+    background: linear-gradient(to right, #C93D3A, #D98C30);
+    transform: scale(1.05);
+}
+
+/* 🔹 LOGIN LINK */
+.login-link {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.login-link span {
+    color: #DA4744;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.login-link span:hover {
+    color: #EAAE40;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .signup-image {
+        display: none; /* Hide image on small screens */
+    }
+}

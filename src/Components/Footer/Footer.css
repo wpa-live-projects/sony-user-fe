@@ -1,0 +1,144 @@
+/* Footer Main Styles */
+.footer {
+    background-color: white;
+    padding-top: 5px;
+    text-align: center;
+}
+
+/* Footer Layout - Includes Location */
+.footer-container {
+    background-color: white;
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two sections: Left (Location) | Right (Main Content) */
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Right Section - Main Footer Content */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Footer Section Styling */
+.footer-section h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Apply Golden Color to Specific Section Titles */
+.golden-text {
+    color: #EAAE40;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* List Styling */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-section ul li a:hover {
+    color: #DA4744;
+}
+
+/* Social Media Icons - Moved Below Opening Hours */
+.social-icons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    color: black;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #DA4744;
+}
+
+/* Footer Bottom (Copyright + Logo + Company Name) */
+.footer-bottom {
+    background-color: #EAAE40;
+    padding: 10px 0;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Footer Branding - Logo, Copyright, and Company Name in One Row */
+.footer-branding {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+/* Footer Logo Styling */
+.footer-logo {
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Footer Text */
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to left */
+}
+
+/* Company Name */
+.company-name {
+    font-weight: bold;
+    color: #DA4744;
+    margin-top: 3px;
+}
+/* Social Media Icons - Thick Black with White Inside */
+.social-icons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;  /* Adjust size */
+    height: 40px;
+    border-radius: 50%; /* Make circular */
+    background-color: black; /* Outer background */
+    color: white; /* Inner icon color */
+    font-size: 20px; /* Adjust icon size */
+    font-weight: bold; /* Make it look thicker */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect - Invert Colors */
+.social-icons a:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}

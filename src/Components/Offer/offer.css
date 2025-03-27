@@ -1,0 +1,91 @@
+/* Main Container */
+.banner-container {
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+/* Inner Container */
+.banner-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Image takes more space */
+    gap: 30px;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+}
+
+/* Image Section */
+.banner-image {
+    display: flex;
+    justify-content: flex-end; /* Push image to right */
+    position: relative;
+}
+
+.banner-image img {
+    max-width: 100px; /* Increased width */
+    height: 400px; /* Adjusted height */
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    box-shadow: -10px 10px 12px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    position: relative;
+    right: -50px; /* Push image further right */
+}
+
+/* Text Section */
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    text-align: left;
+}
+
+/* Heading */
+.banner-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #DA4744; /* Red */
+}
+
+/* Paragraph */
+.banner-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .banner-content {
+        grid-template-columns: 1fr; /* Stack items vertically on small screens */
+        text-align: center;
+    }
+
+    .banner-image {
+        justify-content: center;
+    }
+
+    .banner-image img {
+        max-width: 400px; /* Adjust size for small screens */
+        right: 0; /* Reset position */
+    }
+
+    .banner-text {
+        align-items: center;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+
+    .banner-description {
+        font-size: 13px;
+    }
+}
