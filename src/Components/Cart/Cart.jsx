@@ -23,7 +23,7 @@ const Cart = () => {
       }
 
       setIsLoading(true); // Start loading spinner
-      const response = await axios.get(`http://localhost:5000/api/get/${userId}`);
+      const response = await axios.get(`https://sony-user-be.onrender.com/api/get/${userId}`);
       console.log("Cart data from API:", response.data);
 
       if (response.status === 200 && response.data) {
@@ -43,7 +43,7 @@ const Cart = () => {
   // Remove item from cart
   const removeItem = async (itemId) => {
     try {
-      const response = await axios.delete("http://localhost:5000/api/remove", {
+      const response = await axios.delete("https://sony-user-be.onrender.com/api/remove", {
         data: { userId, itemId }, // Send userId and itemId as the data
       });
 
@@ -81,7 +81,7 @@ const Cart = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/orders", // Backend API route
+        "https://sony-user-be.onrender.com/api/orders", // Backend API route
         {
           itemId: selectedItem.itemId._id,
           size: selectedSize,

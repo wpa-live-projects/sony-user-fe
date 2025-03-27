@@ -19,7 +19,7 @@ const MyOrders = () => {
   const fetchOrders = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:5000/api/orders", {
+      const response = await axios.get("https://sony-user-be.onrender.com/api/orders", {
         headers: { "user-id": userId }
       });
       setOrders(response.data.orders);
@@ -40,7 +40,7 @@ const MyOrders = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/orders/${orderId}/cancel`,
+        `https://sony-user-be.onrender.com/api/orders/${orderId}/cancel`,
         {},
         {
           headers: { "user-id": userId }

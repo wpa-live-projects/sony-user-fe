@@ -26,7 +26,7 @@ const ShirtCollections = () => {
     const fetchItems = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:5000/api/items");
+        const response = await axios.get("https://sony-user-be.onrender.com/api/items");
 
         // Set colors for specific products (modify if needed)
         if (response.data.length > 0) {
@@ -82,7 +82,7 @@ const handleAddToCart = async (itemId) => {
   }
 
   try {
-    const response = await axios.post("http://localhost:5000/api/add", {
+    const response = await axios.post("https://sony-user-be.onrender.com/api/add", {
       userId,
       itemId,
       quantity: 1, // Default quantity
@@ -117,7 +117,7 @@ const handleBuyNow = (item) => {
   const isItemInCart = async (itemId) => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await axios.get(`http://localhost:5000/api/get/${userId}`);
+      const response = await axios.get(`https://sony-user-be.onrender.com/api/get/${userId}`);
       const cartItems = response.data.items || [];
       return cartItems.some((item) => item.itemId._id === itemId);
     } catch (error) {
@@ -130,7 +130,7 @@ const handleBuyNow = (item) => {
   const removeItemFromCart = async (itemId) => {
     try {
       const userId = localStorage.getItem("userId");
-      await axios.delete("http://localhost:5000/api/remove", {
+      await axios.delete("https://sony-user-be.onrender.com/api/remove", {
         data: { userId, itemId },
       });
       console.log(`Item ${itemId} removed from cart.`);
@@ -154,7 +154,7 @@ const handleBuyNow = (item) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/orders",
+        "https://sony-user-be.onrender.com/api/orders",
         {
           itemId: selectedItem._id,
           size: selectedSize,

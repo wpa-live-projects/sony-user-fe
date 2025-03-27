@@ -78,7 +78,7 @@ const Navbar = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:5000/api/change-password",
+        "https://sony-user-be.onrender.com/api/change-password",
         {
           oldPassword: passwordData.oldPassword,
           newPassword: passwordData.newPassword,
