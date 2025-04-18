@@ -5,9 +5,30 @@ import img21 from "../../assets/img21.png";
 import img22 from "../../assets/img22.png";
 
 const products = [
-  { id: 1, image: img20, title: "T-Shirt", price: 500, color: "#F8C8C8" }, // Pink
-  { id: 2, image: img21, title: "T-Shirt", price: 500, color: "#AFCFD5" }, // Light Blue
-  { id: 3, image: img22, title: "T-Shirt", price: 500, color: "#4C1C24" }, // Maroon
+  {
+    id: 1,
+    image: img20,
+    title: "Candy Swirl",
+    price: 500,
+    color: "#F8C8C8",
+    description: "Fun, playful, and full of charm — perfect for cozy days or casual outings with friends.",
+  },
+  {
+    id: 2,
+    image: img21,
+    title: "Sky Drift",
+    price: 500,
+    color: "#AFCFD5",
+    description: "Inspired by clear skies and calm vibes, ideal for a light and breezy look with comfort.",
+  },
+  {
+    id: 3,
+    image: img22,
+    title: "Wine Blaze",
+    price: 500,
+    color: "#4C1C24",
+    description: "Make a bold statement with rich tones and soft comfort that lasts all day and night.",
+  },
 ];
 
 const BestSellers = () => {
@@ -24,11 +45,11 @@ const BestSellers = () => {
             <img src={product.image} alt={product.title} className="product-image" />
             <h3 className="product-title">{product.title}</h3>
             <p className="product-description">
-              Perfect for gym sessions or outdoor adventures. Performance meets style in one sleek package.
+              {product.description}
             </p>
             <p className="product-price"> <strong>₹{product.price}.00</strong> </p>
             <div className="rating">⭐⭐⭐⭐⭐</div>
-            <button className="buy-now-btn" style={{ backgroundColor: product.color }}>
+            <button className="buy-now-btn" style={{ backgroundColor: product.color }} onClick={() => alert("This item will be available soon")}> 
               Buy Now
             </button>
           </div>

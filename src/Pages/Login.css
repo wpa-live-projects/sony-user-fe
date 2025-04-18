@@ -23,44 +23,43 @@ body {
     padding-left: 15px;
     justify-content: center;
     align-items: center;
-    position: absolute; /* Keeps image fixed */
-    left: 10%; /* Adjust this value to control image position */
+    position: absolute;
+    left: 5%;
 }
+
 .login-image img {
     width: 100%;
-    max-width: 500px;
-    height: 500px;
-    padding-bottom:30px;
+    max-width: 650px;
+    height: 590px;
+    padding-bottom: 30px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
 }
 
 .login-image img:hover {
-    transform: scale(1.05); /* Subtle zoom effect on hover */
+    transform: scale(1.05);
 }
 
 /* 🔹 LOGIN FORM STYLING */
 .login-container {
     flex: 1;
     max-width: 400px;
-    padding: 40px;
+    padding: 30px;
     border: 3px solid #DA4744;
     border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
     background-color: white;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.3s ease;
-
     position: relative;
-    left: 200px; /* Moves form slightly to the left */
+    left: 350px;
 }
 
 .login-container:hover {
-    transform: translateY(-5px); /* Floating effect */
+    transform: translateY(-5px);
 }
 
 /* 🔹 HEADING */
@@ -71,16 +70,22 @@ body {
     letter-spacing: 1px;
 }
 
-/* 🔹 INPUT FIELDS */
+/* 🔹 INPUT WRAPPER (UPDATED WIDTH) */
+.form-group {
+    width: 300px; /* Increased width */
+    margin: 15px 0; /* Added more vertical spacing */
+}
+
+/* 🔹 INPUT FIELDS (FULL WIDTH OF .form-group) */
 .login-container input {
     width: 100%;
-    margin: 10px 0;
     padding: 12px;
     border: 2px solid #DA4744;
     border-radius: 6px;
     font-size: 16px;
     outline: none;
     transition: 0.3s;
+    box-sizing: border-box;
 }
 
 .login-container input:focus {
@@ -90,7 +95,7 @@ body {
 
 /* 🔹 LOGIN BUTTON */
 .login-container button {
-    width: 100%;
+    width: 300px; /* Match input width */
     padding: 14px;
     background: linear-gradient(to right, #DA4744, #EAAE40);
     color: white;
@@ -100,6 +105,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .login-container button:hover {
@@ -109,7 +115,7 @@ body {
 
 /* 🔹 SIGNUP LINK */
 .signup-link {
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 16px;
 }
 
@@ -122,4 +128,47 @@ body {
 
 .signup-link span:hover {
     color: #EAAE40;
+}
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+
+    .login-image {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+
+    .login-image img {
+        max-width: 90%;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .login-container {
+        position: static;
+        max-width: 90%;
+        width: 100%;
+        left: 0;
+        box-sizing: border-box;
+        padding: 20px;
+        border-width: 2px;
+    }
+
+    .login-container h2 {
+        font-size: 22px;
+    }
+
+    .login-container input,
+    .login-container button {
+        width: 100%;
+    }
+
+    .signup-link {
+        font-size: 14px;
+    }
 }

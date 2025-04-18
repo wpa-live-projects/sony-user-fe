@@ -1,91 +1,127 @@
-/* Main Container */
-.banner-container {
-    min-height: 550px;
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+.offers-section {
+    min-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
+    padding: 80px 20px;
+    background-color: #f8f8f8;
+    position: relative;
+    font-family: 'Courgette', cursive;
 }
 
-/* Inner Container */
-.banner-content {
+.offers-title {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    color: #EAAE40;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.offers-content {
     display: grid;
-    grid-template-columns: 1fr 1.2fr; /* Image takes more space */
-    gap: 30px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    width: 100%;
     max-width: 1200px;
-    width: 100%;
-    position: relative;
+    margin-top: 60px;
 }
 
-/* Image Section */
-.banner-image {
+.offers-image-container {
     display: flex;
-    justify-content: flex-end; /* Push image to right */
-    position: relative;
+    justify-content: center;
 }
 
-.banner-image img {
-    max-width: 100px; /* Increased width */
-    height: 400px; /* Adjusted height */
+.offers-image {
     width: 100%;
+    max-width: 500px;
+    height: 400px;
     object-fit: cover;
-    margin: 0 auto;
-    box-shadow: -10px 10px 12px rgba(0, 0, 0, 1);
-    border-radius: 10px;
-    position: relative;
-    right: -50px; /* Push image further right */
+    border-radius: 15px;
+    box-shadow: -20px 20px 35px rgba(0, 0, 0, 0.3); /* Increased shadow */
+    border: 8px solid white;
+    transition: transform 0.5s ease;
 }
 
-/* Text Section */
-.banner-text {
+.offers-image:hover {
+    transform: scale(1.03);
+}
+
+.offers-text-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 15px;
-    text-align: left;
+    gap: 25px;
+    padding-right: 40px;
 }
 
-/* Heading */
-.banner-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #DA4744; /* Red */
+.offers-heading {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #DA4744;
+    line-height: 1.2;
 }
 
-/* Paragraph */
-.banner-description {
-    font-size: 14px;
+.offers-heading span {
+    color: #EAAE40;
+}
+
+.offers-description {
+    font-size: 1.1rem;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .banner-content {
-        grid-template-columns: 1fr; /* Stack items vertically on small screens */
+.offers-button {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #EAAE40, #DA4744);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(234, 174, 64, 0.6); /* Increased shadow */
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.offers-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(234, 174, 64, 0.8); /* Stronger hover shadow */
+}
+
+@media (max-width: 992px) {
+    .offers-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .offers-text-content {
+        padding-right: 0;
         text-align: center;
-    }
-
-    .banner-image {
-        justify-content: center;
-    }
-
-    .banner-image img {
-        max-width: 400px; /* Adjust size for small screens */
-        right: 0; /* Reset position */
-    }
-
-    .banner-text {
         align-items: center;
     }
 
-    .banner-title {
-        font-size: 1.8rem;
+    .offers-button {
+        align-self: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .offers-title {
+        font-size: 2rem;
     }
 
-    .banner-description {
-        font-size: 13px;
+    .offers-heading {
+        font-size: 2.2rem;
+    }
+
+    .offers-image {
+        height: 300px;
     }
 }

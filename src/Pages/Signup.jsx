@@ -1,5 +1,6 @@
+// Signup.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Signup.css";
 import signupImage from "../assets/signup.png"; // Adjust the path if needed
 
@@ -32,12 +33,9 @@ function Signup() {
 
     return (
         <div className="signup-wrapper">
-            {/* Left Section - Image */}
             <div className="signup-image">
                 <img src={signupImage} alt="Signup" />
             </div>
-
-            {/* Right Section - Signup Form */}
             <div className="signup-container">
                 <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
@@ -64,8 +62,12 @@ function Signup() {
                     />
                     <button type="submit">Sign Up</button>
                 </form>
+                <p className="login-redirect">
+                    Already have an account? <Link to="/login">Login</Link>
+                </p>
             </div>
         </div>
     );
 }
-export default Signup;
+
+export default Signup;  // Make sure you have default export here

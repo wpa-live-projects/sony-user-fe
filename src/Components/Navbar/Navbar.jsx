@@ -146,6 +146,11 @@ const Navbar = () => {
           <li>
           <a href="#offers" onClick={() => setIsOpen(false)}>Offers</a>
           </li>
+          
+           <li>
+           <a href="#best-sellers" onClick={() => setIsOpen(false)}>Best Sellers</a>
+           </li>
+
           <li>
           <a href="#reviews" onClick={() => setIsOpen(false)}>Reviews</a>
           </li>

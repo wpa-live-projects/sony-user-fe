@@ -1,101 +1,137 @@
 /* General Styles */
 .hero-section {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 500px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left Side - Image Slider */
+.hero-slider {
+  position: absolute;
+  left: 10%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slide-img {
+  width: 50vw;
+  max-width: 315px;
+  height: auto;
+  object-fit: cover;
+  padding-top: 20px;
+}
+
+/* Right Side - Fixed Text */
+.hero-text {
+  width: 50%;
+  max-width: 500px;
+  z-index: 2;
+  position: absolute;
+  right: 10%;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #da4744;
+  font-family: 'Courgette', cursive;
+}
+
+.hero-text p {
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Signika Negative", sans-serif;
+}
+
+.hero-btn {
+  background-color: #eaae40;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Courgette", cursive;
+  border: none;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.hero-btn:hover {
+  background-color: #da4744;
+  transform: scale(1.05);
+}
+
+/* Hide Navigation Dots & Arrows */
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+  display: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 500px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Left Side - Image Slider */
-  .hero-slider {
-    position: absolute;
-    left: 10%; /* Start images from the left */
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Prevents overflow */
-    z-index: 1;
-  }
-  
-  /* Ensure Entire Image is Visible */
-  .slide-img {
-    width: 50vw; /* Adjust image size */
-    max-width: 315px; /* Prevents oversized images */
+    padding: 1rem;
     height: auto;
-    object-fit: cover;
-    padding-top: 20px;
+    gap: 1rem;
   }
-  
-  /* Right Side - Fixed Text */
+
   .hero-text {
-    width: 50%;
-    max-width: 500px;
-    z-index: 2;
-    position: absolute;
-    right: 10%;
+    width: 100%;
+    text-align: center;
+    position: static;
+    padding: 0 1rem;
   }
-  
+
   .hero-text h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #da4744;
-    font-family: 'Courgette', cursive;
+    font-size: 2rem;
   }
-  
+
   .hero-text p {
-    color: #333;
-    font-size: 1.2rem;
-    font-family: "Signika Negative", sans-serif;
-  }
-  
-  .hero-btn {
-    background-color: #eaae40;
-    color: white;
-    padding: 12px 24px;
     font-size: 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: "Courgette", cursive;
-    border: none;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    margin-top: 0.5rem;
   }
-  
-  .hero-btn:hover {
-    background-color: #da4744;
-    transform: scale(1.05);
+
+  .hero-btn {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    font-size: 0.95rem;
   }
-  
-  /* Hide Navigation Dots & Arrows */
-  .swiper-button-next,
-  .swiper-button-prev,
-  .swiper-pagination {
-    display: none !important;
+
+  .hero-slider {
+    position: static;
+    width: 100%;
+    height: auto;
   }
-  
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .hero-section {
-      flex-direction: column;
-      height: auto;
-    }
-  
-    .hero-text {
-      width: 100%;
-      text-align: center;
-      position: static;
-    }
-  
-    .hero-slider {
-      width: 100%;
-      height: 300px;
-    }
-  
-    .slide-img {
-      width: 90vw; /* Adjust for smaller screens */
-      max-width: 500px;
-    }
+
+  .slide-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding-top: 0;
+    object-fit: contain;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .hero-btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}

@@ -1,50 +1,39 @@
+// Offers.jsx
 import React from "react";
-import BannerImg from "../../assets/logo4.png"; // ✅ Correct import
+import BannerImg from "../../assets/offers1.jpg";
 import "./offer.css";
 
-const Banner = () => {
+const Offers = () => {
   return (
-    <div className="relative min-h-[550px] flex flex-col justify-center items-center py-12 sm:py-0 bg-gray-100">
-      {/* Offers Title - Centered at the Top */}
-      <h2 
-        className="absolute top-6 text-[#EAAE40] text-3xl font-semibold text-center" 
-        style={{ fontFamily: "Courgette, cursive" }}
-      >
-        Offers
-      </h2>
+    <div className="offers-section">
+      <h2 className="offers-title">Offers</h2>
 
-      <div className="container mt-12 sm:mt-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-          {/* Image Section */}
-          <div data-aos="zoom-in">
-            <img
-              src={BannerImg} // ✅ Use imported image
-              alt="Banner"
-              className="max-w-[500px] h-[350px] w-full mx-auto drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] object-cover rounded-md"
-            />
-          </div>
+      <div className="offers-content">
+        {/* Image Section */}
+        <div className="offers-image-container" data-aos="zoom-in">
+          <img
+            src={BannerImg}
+            alt="Offer"
+            className="offers-image"
+          />
+        </div>
 
-          {/* Text Details Section */}
-          <div className="flex flex-col justify-center gap-6 sm:pt-0">
-            <h1 data-aos="fade-up" className="text-3xl sm:text-4xl font-bold text-[#DA4744]">
-              Winter Sale up to <span className="text-[#EAAE40]">50% Off</span>
-            </h1>
-            <p data-aos="fade-up" className="text-sm text-gray-600 tracking-wide leading-5">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
-              reiciendis inventore iste ratione ex alias quis magni at optio.
-            </p>
+        {/* Text Section */}
+        <div className="offers-text-content">
+          <h1 className="offers-heading" data-aos="fade-up">
+            Winter Sale up to <span>50% Off</span>
+          </h1>
+          <p className="offers-description" data-aos="fade-up">
+  Take advantage of our Winter Sale with up to <strong>50% off</strong> on select products. Shop now for the best deals on stylish and cozy winter essentials!
+</p>
 
-            {/* Explore Now Button */}
-            <div data-aos="fade-up">
-              <button className="px-6 py-3 bg-[#EAAE40] text-white font-medium rounded-md shadow-md hover:bg-[#DA4744] transition duration-300">
-                Explore Now
-              </button>
-            </div>
-          </div>
+          <button className="offers-button" data-aos="fade-up">
+            Explore Now
+          </button>
         </div>
       </div>
     </div>
   );
 };
-export default Banner;
-console.log('Banner component rendered');
+
+export default Offers;

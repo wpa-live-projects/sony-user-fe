@@ -23,21 +23,22 @@ body {
     padding-left: 15px;
     justify-content: center;
     align-items: center;
-    position: absolute; /* Keeps image fixed */
-    left: 10%; /* Adjust this value to control image position */
+    position: absolute;
+    left: 0;
+    top: -10%;
 }
 
 .signup-image img {
-    width: 100%;
-    max-width: 500px;
-    height: 550px;
+    width: 120%;
+    max-width: 1000px;
+    height: 800px;
     padding-bottom: 50px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
 }
 
 .signup-image img:hover {
-    transform: scale(1.05); /* Subtle zoom effect on hover */
+    transform: scale(1.05);
 }
 
 /* 🔹 SIGNUP FORM STYLING */
@@ -50,18 +51,16 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
     background-color: white;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: transform 0.3s ease;
-
     position: relative;
-    left: 200px; /* Moves form slightly to the left */
+    left: 300px;
 }
 
 .signup-container:hover {
-    transform: translateY(-5px); /* Floating effect */
+    transform: translateY(-5px);
 }
 
 /* 🔹 HEADING */
@@ -125,14 +124,131 @@ body {
     color: #EAAE40;
 }
 
-/* Responsive Design */
+/* 🔹 LOGIN LINK STYLING */
+.login-redirect {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.login-redirect a {
+    color: #DA4744;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.login-redirect a:hover {
+    color: #EAAE40;
+}
+
+/* ===================== */
+/* MOBILE RESPONSIVENESS */
+/* ===================== */
+@media (max-width: 1024px) {
+    .signup-image img {
+        width: 100%;
+        height: auto;
+        max-width: 600px;
+    }
+    
+    .signup-container {
+        left: 150px;
+    }
+}
+
 @media (max-width: 768px) {
     .signup-wrapper {
         flex-direction: column;
-        text-align: center;
+        height: auto;
+        padding: 20px 10px;
     }
 
     .signup-image {
-        display: none; /* Hide image on small screens */
+        position: relative;
+        left: auto;
+        top: auto;
+        padding: 0;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .signup-image img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .signup-container {
+        position: relative;
+        left: auto;
+        max-width: 100%;
+        padding: 30px 20px;
+        margin-top: 20px;
+        border: 2px solid #DA4744;
+    }
+
+    .signup-container h2 {
+        font-size: 22px;
+    }
+
+    .signup-container input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .signup-container button {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .login-link,
+    .login-redirect {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 25px 15px;
+        margin-top: 10px;
+    }
+    
+    .signup-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .signup-container input {
+        padding: 8px 10px;
+        margin: 8px 0;
+    }
+    
+    .signup-container button {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .signup-container {
+        padding: 20px 12px;
+    }
+    
+    .signup-container h2 {
+        font-size: 18px;
+    }
+    
+    .signup-container input {
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+    
+    .signup-container button {
+        font-size: 15px;
+    }
+    
+    .login-link,
+    .login-redirect {
+        font-size: 13px;
     }
 }

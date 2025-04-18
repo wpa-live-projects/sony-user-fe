@@ -13,8 +13,8 @@ import MyOrders from "./Components/Myorders/Myorders";
 const App = () => {
   const location = useLocation(); // Get the current route path
 
-  // Check if current path is Cart or My Orders page
-  const hideFooterRoutes = ["/cart", "/my-orders"]; // Hide footer on these pages
+  // Check if current path is Cart, My Orders, Login, or Signup page
+  const hideFooterRoutes = ["/cart", "/my-orders", "/login", "/signup"]; // Hide footer on these pages
   const isFooterHidden = hideFooterRoutes.includes(location.pathname);
 
   // ✅ Check session expiry on page load or refresh
@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/my-orders" element={<MyOrders />} />
       </Routes>
 
-      {/* Hide Footer on /cart and /my-orders */}
+      {/* Hide Footer on /cart, /my-orders, /login, and /signup */}
       {!isFooterHidden && <Footer />}
     </div>
   );
