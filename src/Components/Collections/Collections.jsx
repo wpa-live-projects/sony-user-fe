@@ -53,14 +53,14 @@ const ShirtCollections = () => {
           });
         }
 
-           // ✨ Add this line to reverse the items ✨
-           enhancedItems = enhancedItems.reverse();
-
         let enhancedItems = response.data.map((item) => ({
           ...item,
           colors: productColors[item._id] || [],
           images: item.images?.length >= 2 ? item.images : [item.image, item.image],
         }));
+
+        // ✨ Add this line to reverse the items ✨
+        enhancedItems = enhancedItems.reverse();
 
         if (!isMorePage) {
           enhancedItems = enhancedItems.slice(0, 8); // Show only 8 on /shop
