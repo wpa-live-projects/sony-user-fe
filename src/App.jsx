@@ -42,6 +42,8 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/my-orders" element={<MyOrders />} />
+
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 
       {/* Hide Footer on /cart, /my-orders, /login, /signup, and /shop/more */}
