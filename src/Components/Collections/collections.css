@@ -290,50 +290,119 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
   background: #fff;
-  padding: 20px;
-  width: 400px;
-  border-radius: 8px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 label {
   font-weight: bold;
   margin-top: 10px;
   display: block;
+  color: #333;
 }
 
 select,
 textarea {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-top: 5px;
   margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
 }
 
 .modal-actions {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .confirm-btn,
 .cancel-btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: none;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .confirm-btn {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+  background-color: #10b981;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.confirm-btn:active {
+  transform: translateY(0);
 }
 
 .cancel-btn {
-  background-color: #f44336;
-  color: #fff;
+  background-color: #ef4444;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+
+
+.explore-more-btn {
+  background-color: #f59e0b;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 12px 40px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Courgette', cursive;
+  perspective: 1000px;
+  transition: transform 0.6s ease, background-color 0.4s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+}
+
+.explore-more-btn:hover {
+  background-color: #f87171; /* Light red */
+  transform: rotateX(15deg);
+}
+
+.explore-more-btn:active {
+  transform: rotateX(0deg);
 }

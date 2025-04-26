@@ -1,51 +1,71 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./collections.css"; // Your existing CSS
+import "./collections.css";
 
 const ShirtCollections = () => {
-  const [items, setItems] = useState([]); // Store fetched items
-  const [selectedImages, setSelectedImages] = useState({}); // Store selected images for each item
-  const [loading, setLoading] = useState(true); // Loading state
-  const [showModal, setShowModal] = useState(false); // Show/hide modal
-  const [selectedItem, setSelectedItem] = useState(null); // Store selected item for Buy Now
-  const [selectedSize, setSelectedSize] = useState(""); // Store chosen size
-  const [address, setAddress] = useState(""); // Store entered address
+  const [items, setItems] = useState([]);
+  const [selectedImages, setSelectedImages] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [address, setAddress] = useState("");
 
-  // Define color options for each product
+  const location = useLocation();
+  const isMorePage = location.pathname.includes("/shop/more");
+
   const productColors = {};
 
-  // Define size options based on item type
   const getSizeOptions = (type) => {
     return type === "shirt"
       ? ["S", "M", "L", "XL", "XXL"]
       : ["28", "30", "32", "34", "36"];
   };
 
-  // Fetch items from backend API using axios
   useEffect(() => {
     const fetchItems = async () => {
       try {
         setLoading(true);
         const response = await axios.get("https://sony-user-be.onrender.com/api/items");
 
-        // Set colors for specific products (modify if needed)
+        
         if (response.data.length > 0) {
-          productColors[response.data[2]._id] = ["#6b6652", "#7a6a5d"];
-          productColors[response.data[3]._id] = ["#929f88", "#4a5d3b"];
-          productColors[response.data[4]._id] = ["#0D0D0D", "#7B7B7B"];
-          productColors[response.data[5]._id] = ["#2F415C", "#5A5A5A"];
-          productColors[response.data[6]._id] = ["#192A44", "#7B7B7B"];
-          productColors[response.data[7]._id] = ["#929f90", "#7B7B7B"];
+          const colorsList = [
+            ["#23266B", "#D2E1E7"],
+            ["#b3bcc5", "#D2E1E7"],
+            ["#a19d99", "#c7c8c6"],
+            ["#2A3A47", "#D2E1E7"],
+            ["#2D4C40", "#382420"],
+            ["#8498A7", "#D7A8A1"],
+            ["#6b6652", "#7a6a5d"],
+            ["#929f88", "#4a5d3b"],
+            ["#0D0D0D", "#7B7B7B"],
+            ["#2F415C", "#5A5A5A"],
+            ["#192A44", "#7B7B7B"],
+            ["#929f90", "#7B7B7B"],
+          ];
+        
+          response.data.forEach((item, index) => {
+            if (colorsList[index]) {
+              productColors[item._id] = colorsList[index];
+            }
+          });
         }
 
-        // Enhance items with color options and images
-        const enhancedItems = response.data.map((item) => ({
+           // ✨ Add this line to reverse the items ✨
+           enhancedItems = enhancedItems.reverse();
+
+        let enhancedItems = response.data.map((item) => ({
           ...item,
           colors: productColors[item._id] || [],
           images: item.images?.length >= 2 ? item.images : [item.image, item.image],
         }));
 
-        // Initialize selected images with the first image for each item
+        if (!isMorePage) {
+          enhancedItems = enhancedItems.slice(0, 8); // Show only 8 on /shop
+        }
+
         const initialImages = enhancedItems.reduce((acc, item) => {
           acc[item._id] = item.images[0];
           return acc;
@@ -61,9 +81,8 @@ const ShirtCollections = () => {
     };
 
     fetchItems();
-  }, []);
+  }, [isMorePage]);
 
-  // Handle color selection
   const handleColorClick = (itemId, colorIndex) => {
     setSelectedImages((prev) => ({
       ...prev,
@@ -71,49 +90,41 @@ const ShirtCollections = () => {
     }));
   };
 
-  // Handle Add to Cart
-// Handle Add to Cart
-const handleAddToCart = async (itemId) => {
-  const userId = localStorage.getItem("userId"); // Get userId from localStorage
-  if (!userId) {
-    alert("You need to log in first!");
-    window.location.href = "/login"; // Redirect to login page if not logged in
-    return;
-  }
+  const handleAddToCart = async (itemId) => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("You need to log in first!");
+      window.location.href = "/login";
+      return;
+    }
 
-  try {
-    const response = await axios.post("https://sony-user-be.onrender.com/api/add", {
-      userId,
-      itemId,
-      quantity: 1, // Default quantity
-    });
+    try {
+      await axios.post("https://sony-user-be.onrender.com/api/add", {
+        userId,
+        itemId,
+        quantity: 1,
+      });
+      alert("Item added to cart successfully!");
+    } catch (error) {
+      console.error("Error adding to cart:", error.response?.data?.message || error.message);
+      alert("Failed to add item to cart.");
+    }
+  };
 
-    alert("Item added to cart successfully!");
-  } catch (error) {
-    console.error("Error adding to cart:", error.response?.data?.message || error.message);
-    alert("Failed to add item to cart.");
-  }
-};
+  const handleBuyNow = (item) => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("You need to log in first!");
+      window.location.href = "/login";
+      return;
+    }
 
+    setSelectedItem(item);
+    setSelectedSize("");
+    setAddress("");
+    setShowModal(true);
+  };
 
-  // Handle Buy Now
-// Handle Buy Now
-const handleBuyNow = (item) => {
-  const userId = localStorage.getItem("userId"); // Get userId from localStorage
-  if (!userId) {
-    alert("You need to log in first!");
-    window.location.href = "/login"; // Redirect to login page if not logged in
-    return;
-  }
-
-  setSelectedItem(item);
-  setSelectedSize(""); // Reset size
-  setAddress(""); // Reset address
-  setShowModal(true); // Show modal
-};
-
-
-  // ✅ Check if item is in the cart
   const isItemInCart = async (itemId) => {
     try {
       const userId = localStorage.getItem("userId");
@@ -126,7 +137,6 @@ const handleBuyNow = (item) => {
     }
   };
 
-  // ✅ Remove item from cart after placing order
   const removeItemFromCart = async (itemId) => {
     try {
       const userId = localStorage.getItem("userId");
@@ -139,7 +149,6 @@ const handleBuyNow = (item) => {
     }
   };
 
-  // ✅ Handle Order Submission
   const handleSubmitOrder = async () => {
     if (!selectedSize || !address) {
       alert("Please select a size and enter your address.");
@@ -153,7 +162,7 @@ const handleBuyNow = (item) => {
     }
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://sony-user-be.onrender.com/api/orders",
         {
           itemId: selectedItem._id,
@@ -169,9 +178,8 @@ const handleBuyNow = (item) => {
       );
 
       alert("Order placed successfully!");
-      setShowModal(false); // Close modal after success
+      setShowModal(false);
 
-      // ✅ Check if item is in the cart and remove if necessary
       const isInCart = await isItemInCart(selectedItem._id);
       if (isInCart) {
         await removeItemFromCart(selectedItem._id);
@@ -206,7 +214,6 @@ const handleBuyNow = (item) => {
 
             <h3 className="item-name">{item.name}</h3>
 
-            {/* Item Details */}
             <div className="item-details">
               <div className="colors">
                 {item.colors.map((color, index) => (
@@ -223,31 +230,17 @@ const handleBuyNow = (item) => {
               <span className="item-price">₹{item.cost}</span>
             </div>
 
-            {/* Rating, Category & Type */}
             <div className="item-extra-details">
-              <p>
-                <strong>Rating:</strong> ⭐ {item.rating}/5
-              </p>
-              <p>
-                <strong>Category:</strong> {item.category}
-              </p>
-              <p>
-                <strong>Type:</strong> {item.type}
-              </p>
+              <p><strong>Rating:</strong> ⭐ {item.rating}/5</p>
+              <p><strong>Category:</strong> {item.category}</p>
+              <p><strong>Type:</strong> {item.type}</p>
             </div>
 
-            {/* Button Group */}
             <div className="button-group">
-              <button
-                onClick={() => handleAddToCart(item._id)}
-                className="add-to-cart-btn"
-              >
+              <button onClick={() => handleAddToCart(item._id)} className="add-to-cart-btn">
                 Add to Cart
               </button>
-              <button
-                onClick={() => handleBuyNow(item)}
-                className="buy-now-btn"
-              >
+              <button onClick={() => handleBuyNow(item)} className="buy-now-btn">
                 Buy Now
               </button>
             </div>
@@ -255,13 +248,11 @@ const handleBuyNow = (item) => {
         ))}
       </div>
 
-      {/* Modal for Size & Address */}
       {showModal && selectedItem && (
         <div className="modal">
           <div className="modal-content">
             <h2>Confirm Your Order</h2>
 
-            {/* Size Selection */}
             <label htmlFor="size">Select Size:</label>
             <select
               id="size"
@@ -276,7 +267,6 @@ const handleBuyNow = (item) => {
               ))}
             </select>
 
-            {/* Address Input */}
             <label htmlFor="address">Enter Delivery Address:</label>
             <textarea
               id="address"
@@ -285,16 +275,23 @@ const handleBuyNow = (item) => {
               placeholder="Enter your delivery address"
             ></textarea>
 
-            {/* Submit and Cancel Buttons */}
             <div className="modal-actions">
-              <button onClick={handleSubmitOrder} className="confirm-btn">
-                Confirm Order
-              </button>
-              <button onClick={() => setShowModal(false)} className="cancel-btn">
-                Cancel
-              </button>
+              <button onClick={handleSubmitOrder} className="confirm-btn">Confirm Order</button>
+              <button onClick={() => setShowModal(false)} className="cancel-btn">Cancel</button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Show Explore More button only on /shop */}
+      {!isMorePage && (
+        <div className="text-center">
+          <button
+            className="explore-more-btn"
+            onClick={() => (window.location.href = "/shop/more")}
+          >
+            Explore More
+          </button>
         </div>
       )}
     </div>

@@ -20,10 +20,14 @@
   /* Reviews Container */
   .reviews-container {
     display: flex;
-    gap: 1rem;
     padding: 1rem;
-    width: max-content; /* Ensures content extends beyond the screen if needed */
+    width: max-content;
   }
+  
+  .review-card:not(:last-child) {
+    margin-right: 1rem;
+  }
+  
   
   /* Scrollbar Styling */
   .reviews-wrapper::-webkit-scrollbar {
@@ -39,9 +43,9 @@
   .reviews-wrapper::-webkit-scrollbar-thumb {
     background: #DA4744; /* Red scrollbar */
     border-radius: 5px;
-    height: 15px !important; /* Short scrollbar */
-    min-height: 15px !important; /* Prevent stretching */
-    width: 10px; /* Thick scrollbar */
+    /* height: 15px !important; Short scrollbar */
+    /* min-height: 15px !important; Prevent stretching */
+    /* width: 10px; Thick scrollbar */
   }
   
   .reviews-wrapper::-webkit-scrollbar-thumb:hover {
@@ -101,3 +105,65 @@
     text-align: center;
   }
   
+  .reviews-container {
+    display: flex;
+    padding: 1rem;
+    width: calc((250px * 10) + (16px * 9)); /* 10 cards, 9 gaps */
+  }
+  
+  .review-card {
+    flex: 0 0 250px;
+    margin-right: 16px;
+  }
+  
+  .review-card:last-child {
+    margin-right: 0; /* No gap after last card */
+  }
+
+  /* Mobile View: Show only one full card at a time */
+@media screen and (max-width: 480px) {
+  .reviews-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .reviews-container {
+    width: 108%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .review-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+    margin-right: 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .reviews-wrapper {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .review-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .review-name {
+    font-size: 1rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .star-icon {
+    font-size: 1rem;
+  }
+
+  .reviews-title {
+    font-size: 1.8rem;
+  }
+}

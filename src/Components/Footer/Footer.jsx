@@ -22,7 +22,7 @@ const Footer = ({ showBrandingOnly }) => {
           <div className="footer-content">
             <div className="footer-section">
               <h3 className="golden-text">About Us</h3>
-              <p>0123456789</p>
+              <p>9701303248</p>
               <p>sony@gmail.com</p>
             </div>
 
@@ -44,6 +44,9 @@ const Footer = ({ showBrandingOnly }) => {
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#collections">Shop</a></li>
+                <li><a href="#offers">Offers</a></li>
+                <li><a href="#best-sellers">Best Sellers</a></li>
+                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#footer">Contact</a></li>
               </ul>
             </div>

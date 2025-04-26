@@ -31,6 +31,7 @@ const AboutUs = () => {
                 <span className="gold-text"> Us</span>
             </h2>
 
+            {/* Desktop/Layout: Image Slider and Video side by side */}
             <div className="content-wrapper">
                 <div className="image-slider">
                     {images.map((img, index) => (
@@ -51,6 +52,37 @@ const AboutUs = () => {
                 </div>
             </div>
 
+            {/* Mobile Layout: Image Slider → Dots → Video */}
+            <div className="mobile-content-wrapper">
+                <div className="mobile-image-slider">
+                    {images.map((img, index) => (
+                        <img
+                            key={`mobile-${index}`}
+                            src={img}
+                            alt={`Slide ${index + 1}`}
+                            className={`mobile-slider-image ${index === currentSlide ? "active" : ""}`}
+                        />
+                    ))}
+                </div>
+
+                <div className="mobile-slider-dots">
+                    {images.map((_, index) => (
+                        <span
+                            key={`mobile-dot-${index}`}
+                            className={`mobile-dot ${index === currentSlide ? "active" : ""}`}
+                            onClick={() => setCurrentSlide(index)}
+                        ></span>
+                    ))}
+                </div>
+
+                <div className="mobile-video-container">
+                    <video className="mobile-video-content" autoPlay loop muted controls>
+                        <source src={sonyVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
             <div className="slider-dots">
                 {images.map((_, index) => (
                     <span
@@ -60,7 +92,7 @@ const AboutUs = () => {
                     ></span>
                 ))}
             </div>
-        </div>
+        </div>   
     );
 };
 
